@@ -71,12 +71,29 @@ namespace FxMigrant
                 {
                     await Delay(0);
 
+                    var filesForMigration = new List<string>();
                     var mdFileName = GetResourceMetadata(resourceName, "migration_file", md);
-                    var migrationAssembly = await LoadMigrationAssembly(resourceName, mdFileName);
 
-                    if (migrationAssembly != null)
+                    if (mdFileName.Contains("*")) // signifies globbing will be used as a search pattern
                     {
-                        migrationAssemblies.Add(migrationAssembly);
+                        var resourcePath = GetResourcePath(resourceName).Replace("//", "/");
+                        var globbedFiles = Directory.GetFiles(resourcePath, mdFileName);
+
+                        filesForMigration = globbedFiles.Select(o => o.Replace(resourcePath + "/", "")).ToList();
+                    }
+                    else
+                    {
+                        filesForMigration.Add(mdFileName);
+                    }
+
+                    foreach (var fileName in filesForMigration)
+                    {
+                        var migrationAssembly = await LoadMigrationAssembly(resourceName, fileName);
+
+                        if (migrationAssembly != null)
+                        {
+                            migrationAssemblies.Add(migrationAssembly);
+                        }
                     }
                 }
                 
