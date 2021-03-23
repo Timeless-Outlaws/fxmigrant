@@ -79,7 +79,7 @@ namespace FxMigrant
                         var resourcePath = GetResourcePath(resourceName).Replace("//", "/");
                         var globbedFiles = Directory.GetFiles(resourcePath, mdFileName);
 
-                        filesForMigration = globbedFiles.Select(o => o.Replace(resourcePath + "/", "")).ToList();
+                        filesForMigration = globbedFiles.Select(o => o.Replace(resourcePath + "/", "").Replace(resourcePath + "\\", "")).ToList();
                     }
                     else
                     {
