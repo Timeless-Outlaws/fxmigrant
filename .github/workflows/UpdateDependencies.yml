@@ -23,7 +23,7 @@ jobs:
       uses: bumbummen99/dotnet-outdated-action@v4
       with:
         location: 'server/FxMigrant.csproj'
-        extras: '--version-lock=Minor'
+        extra: '--version-lock=Minor'
     -
       name: Commit the changes
       run: |
