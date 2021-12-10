@@ -19,29 +19,12 @@ jobs:
       with:
         dotnet-version: '3.1.112'
     - 
+      name: Install dependencies
+      run: dotnet restore
+    - 
       name: Update using NuGet
       uses: Bchir/update-nuget@V1.0.0
       with:
-        # Select what packages to update
-        # Possible values : 'deprecated' , 'outdated'
         searchFor: 'outdated'
-
-        # Considers only the packages with a matching criteria when searching for newer packages
-        #Possible values : 'highest-minor' , 'highest-patch', 'latest'
         versionToSelect: 'highest-minor'
-
-        # Should consider Prerelease versions of NuGet packages.
-        includePrerelease: # optional, default is false
-
-        # Targeted directory, it will look for any csProj file recursively.
-        # example : ./src
         directory: ./server
-
-        # targeted framework
-        targetFramework: # optional
-
-        # List of NuGet sources to use. Each source in one line.
-        source: # optional
-
-        # List of NuGet packages that should be ignored by the action. Each NuGet on one line.
-        ignore: # optional
