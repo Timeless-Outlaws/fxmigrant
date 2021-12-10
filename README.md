@@ -7,8 +7,6 @@ _automated database migrations for CitizenFX servers_
 3. Currently, only MySQL is supported. Use a valid MySQLConnector connection string as `mysql_connection_string` convar. Typically, `mysql-async` already uses this kind of string.
 4. Run a resource that uses FxMigrant.
 
-Currently (2019-05-25), it's unlikely for Linux servers to work with this as-is, this might need either a new artifact build or the usual copying of CitizenFX.Core.Server.dll.
-
 ## Building
 1. Clone the repository.
 2. Make sure you have .NET Core SDK installed.
