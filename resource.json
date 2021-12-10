@@ -1,0 +1,6 @@
+{
+  "post-install": {
+    "linux": "./build.sh",
+    "windows": ".\\build.ps1"
+  }
+}
