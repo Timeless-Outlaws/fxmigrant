@@ -20,9 +20,10 @@ jobs:
         dotnet-version: '3.1.112'
     - 
       name: Update packages
-      uses: stphnwlsh/dotnet-outdated-action@v2
+      uses: bumbummen99/dotnet-outdated-action@v2
       with:
-        location: server/FxMigrant.csproj
+        location: 'server/FxMigrant.csproj'
+        extras: '--version-lock=Minor'
     -
       name: Commit the changes
       run: |
