@@ -22,7 +22,7 @@ jobs:
       name: Update packages
       uses: stphnwlsh/dotnet-outdated-action@v2
       with:
-        location: ./server
+        location: server/FxMigrant.csproj
     -
       name: Commit the changes
       run: |
