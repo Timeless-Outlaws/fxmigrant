@@ -6,7 +6,7 @@ pushd server
 dotnet publish -c Release
 popd
 
-cp __resource.lua dist/fxmigrant/
+cp fxmanifest.lua dist/fxmigrant/
 cp helper.lua dist/fxmigrant/
 
 mkdir -p dist/fxmigrant/server/bin/Release/netstandard2.0/publish/
