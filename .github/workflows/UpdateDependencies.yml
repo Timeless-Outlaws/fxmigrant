@@ -19,14 +19,19 @@ jobs:
       with:
         dotnet-version: '3.1.112'
     - 
-      name: Install dependencies
-      run: |
-        cd server/
-        dotnet restore
-    - 
-      name: Update using NuGet
-      uses: Bchir/update-nuget@V1.0.1-RC3
+      name: Update packages
+      uses: stphnwlsh/dotnet-outdated-action@v2
       with:
-        searchFor: 'outdated'
-        versionToSelect: 'highest-minor'
-        directory: ./server
+        location: ./server
+    -
+      name: Commit the changes
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'noreply@github.com'
+          git add .
+          git commit -am "Updated dependencies"
+          git push
+        else
+          echo "No changes, skipping."
+        fi
