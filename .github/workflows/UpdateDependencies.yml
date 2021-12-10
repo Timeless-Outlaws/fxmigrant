@@ -25,7 +25,7 @@ jobs:
         dotnet restore
     - 
       name: Update using NuGet
-      uses: Bchir/update-nuget@V1.0.0
+      uses: Bchir/update-nuget@V1.0.1-RC3
       with:
         searchFor: 'outdated'
         versionToSelect: 'highest-minor'
